@@ -1,12 +1,11 @@
-<!-- EditRidesDriver.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Ride Driver</title>
+    <title>Ride Details</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../style/style.css"> 
+    <link rel="stylesheet" href="../style/style.css">
     <link rel="stylesheet" href="../style/header.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -16,7 +15,7 @@
         <div class="container">
             <h2 class="text-center">Aventones <i class="fa fa-car"></i></h2>
             <div class="float-left">
-               
+                
                 <a href="ViewRideDriver.html" class="mr-3">Rides</a>
                 <a href="bookings.html">Booking</a>
             </div>
@@ -28,80 +27,76 @@
     </div>
     <div class="container mt-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h1>Edit Ride</h1>
+            <h1>Ride Details</h1>
             <div>
-                <button class="btn btn-secondary" onclick="goBack()">Back</button> <!-- Botón de regreso -->
+                <button class="btn btn-primary" onclick="goBack()">Back</button>
             </div>
         </div>
-        <form id="editRideForm">
+        <form id="rideDetailsForm">
             <div class="form-group">
                 <label for="departureFrom">Departure From</label>
-                <input type="text" id="departureFrom" class="form-control" required>
+                <input type="text" id="departureFrom" class="form-control" disabled>
             </div>
             <div class="form-group">
                 <label for="arriveTo">Arrive To</label>
-                <input type="text" id="arriveTo" class="form-control" required>
+                <input type="text" id="arriveTo" class="form-control" disabled>
             </div>
             <div class="form-group">
                 <label>Días</label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="mondayCheckbox" value="Monday">
+                    <input class="form-check-input" type="checkbox" id="mondayCheckbox" value="Monday" disabled>
                     <label class="form-check-label" for="mondayCheckbox">Monday</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="tuesdayCheckbox" value="Tuesday">
+                    <input class="form-check-input" type="checkbox" id="tuesdayCheckbox" value="Tuesday" disabled>
                     <label class="form-check-label" for="tuesdayCheckbox">Tuesday</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="wednesdayCheckbox" value="Wednesday">
+                    <input class="form-check-input" type="checkbox" id="wednesdayCheckbox" value="Wednesday" disabled>
                     <label class="form-check-label" for="wednesdayCheckbox">Wednesday</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="thursdayCheckbox" value="Thursday">
+                    <input class="form-check-input" type="checkbox" id="thursdayCheckbox" value="Thursday" disabled>
                     <label class="form-check-label" for="thursdayCheckbox">Thursday</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="fridayCheckbox" value="Friday">
+                    <input class="form-check-input" type="checkbox" id="fridayCheckbox" value="Friday" disabled>
                     <label class="form-check-label" for="fridayCheckbox">Friday</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="saturdayCheckbox" value="Saturday">
+                    <input class="form-check-input" type="checkbox" id="saturdayCheckbox" value="Saturday" disabled>
                     <label class="form-check-label" for="saturdayCheckbox">Saturday</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="sundayCheckbox" value="Sunday">
+                    <input class="form-check-input" type="checkbox" id="sundayCheckbox" value="Sunday" disabled>
                     <label class="form-check-label" for="sundayCheckbox">Sunday</label>
                 </div>
             </div>
             <div class="form-group">
                 <label for="time">Time</label>
-                <input type="text" id="time" class="form-control" required>
+                <input type="text" id="time" class="form-control" disabled>
             </div>
             <div class="form-group">
                 <label for="seats">Seats</label>
-                <input type="number" id="seats" class="form-control" required>
+                <input type="number" id="seats" class="form-control" disabled>
             </div>
             <div class="form-group">
                 <label for="fee">Fee</label>
-                <input type="number" id="fee" class="form-control" required>
+                <input type="number" id="fee" class="form-control" disabled>
             </div>
             <div class="form-group">
                 <label for="make">Make</label>
-                <input type="text" id="make" class="form-control" required>
+                <input type="text" id="make" class="form-control" disabled>
             </div>
             <div class="form-group">
                 <label for="model">Model</label>
-                <input type="text" id="model" class="form-control" required>
+                <input type="text" id="model" class="form-control" disabled>
             </div>
             <div class="form-group">
                 <label for="year">Year</label>
-                <input type="number" id="year" class="form-control" required>
+                <input type="number" id="year" class="form-control" disabled>
             </div>
-            <button type="submit" class="btn btn-primary">Update</button>
         </form>
-        <div id="error-message" class="alert alert-danger d-none" role="alert">
-            Error updating ride. Please try again.
-        </div>
     </div>
     <script src="../js/common.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -110,7 +105,7 @@
         const urlParams = new URLSearchParams(window.location.search);
         const rideId = urlParams.get('id');
 
-        function loadRideData() {
+        function loadRideDetails() {
             axios.get(`http://localhost:3001/api/rides/${rideId}`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
@@ -118,9 +113,9 @@
             })
             .then(function(response) {
                 const ride = response.data;
-                console.log('Datos del ride:', ride);
+                console.log('Ride details:', ride);
 
-                // Llena los campos del formulario con los datos del ride
+                // Llenar los campos del formulario con los detalles del ride
                 document.getElementById('departureFrom').value = ride.departureFrom;
                 document.getElementById('arriveTo').value = ride.arriveTo;
                 document.getElementById('time').value = ride.time;
@@ -130,73 +125,21 @@
                 document.getElementById('model').value = ride.vehicle.model;
                 document.getElementById('year').value = ride.vehicle.year;
 
-                // Marca los checkboxes de días según los datos del ride
+                // Marcar los checkboxes de días según los datos del ride
                 ride.days.forEach(day => {
                     document.getElementById(`${day.toLowerCase()}Checkbox`).checked = true;
                 });
             })
             .catch(function(error) {
-                console.error('Error cargando datos del ride:', error);
-                document.getElementById('error-message').classList.remove('d-none');
+                console.error('Error loading ride details:', error);
             });
         }
-
-        document.getElementById('editRideForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const departureFrom = document.getElementById('departureFrom').value;
-            const arriveTo = document.getElementById('arriveTo').value;
-            const time = document.getElementById('time').value;
-            const seats = document.getElementById('seats').value;
-            const fee = document.getElementById('fee').value;
-            const make = document.getElementById('make').value;
-            const model = document.getElementById('model').value;
-            const year = document.getElementById('year').value;
-
-            const days = [];
-            ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'].forEach(day => {
-                if (document.getElementById(`${day}Checkbox`).checked) {
-                    days.push(day.charAt(0).toUpperCase() + day.slice(1));
-                }
-            });
-
-            const updatedRide = {
-                departureFrom,
-                arriveTo,
-                time,
-                seats: parseInt(seats),
-                fee: parseFloat(fee),
-                vehicle: {
-                    make,
-                    model,
-                    year: parseInt(year)
-                },
-                days
-            };
-
-            console.log('Updated ride data:', updatedRide);
-            console.log('rideId:', rideId);
-
-            axios.put(`http://localhost:3001/api/rides/${rideId}`, updatedRide, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            })
-            .then(function(response) {
-                console.log('Ride actualizado:', response.data);
-                window.location.href = 'ViewRideDriver.html';
-            })
-            .catch(function(error) {
-                console.error('Error actualizando el ride:', error.response ? error.response.data : error);
-                document.getElementById('error-message').classList.remove('d-none');
-            });
-        });
 
         function goBack() {
             window.history.back();
         }
 
-        window.onload = loadRideData;
+        window.onload = loadRideDetails;
     </script>
 </body>
 </html>
